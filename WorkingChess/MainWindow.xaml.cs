@@ -733,6 +733,7 @@ namespace WorkingChess
             //random move
             if (rook && RandomRookMove(bRookX, bRookY))
             {
+                if (checkX == wPownX && checkY == wPownY) { StackPanel.SetZIndex(MyWpFigure, -1); wPown = false; }
                 MyBrFigure.Margin = new Thickness(checkX * 50, checkY * 50, 0, 0);
                 board[bRookY, bRookX] = 0;
                 bRookX = checkX; bRookY = checkY;
@@ -741,6 +742,7 @@ namespace WorkingChess
             }
             if (bishop && RandomBishopMove(bBishopX, bBishopY))
             {
+                if (checkX == wPownX && checkY == wPownY) { StackPanel.SetZIndex(MyWpFigure, -1); wPown = false; }
                 MyBbFigure.Margin = new Thickness(checkX * 50, checkY * 50, 0, 0);
                 board[bBishopY, bBishopX] = 0;
                 bBishopX = checkX; bBishopY = checkY;
@@ -749,6 +751,7 @@ namespace WorkingChess
             }
             if (horse && RandomHorseMove(bHorseX, bHorseY))
             {
+                if (checkX == wPownX && checkY == wPownY) { StackPanel.SetZIndex(MyWpFigure, -1); wPown = false; }
                 MyBnFigure.Margin = new Thickness(checkX * 50, checkY * 50, 0, 0);
                 board[bHorseY, bHorseX] = 0;
                 bHorseX = checkX; bHorseY = checkY;
