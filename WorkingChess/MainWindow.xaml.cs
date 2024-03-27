@@ -31,7 +31,6 @@ namespace WorkingChess
         double DeltaX, DeltaY;
         int checkX, checkY;
 
-
         int bBishopX = 5, bBishopY = 0;
         int bHorseX = 6, bHorseY = 0;
         int bRookX = 7, bRookY = 0;
@@ -139,13 +138,13 @@ namespace WorkingChess
         }
         public bool BKingWin(int X, int Y)
         {
-            try { if (board[Y + 1, X] == 1000) { return true; } } catch (Exception) { }
+            try { if (board[Y + 1, X    ] == 1000) { return true; } } catch (Exception) { }
             try { if (board[Y + 1, X + 1] == 1000) { return true; } } catch (Exception) { }
-            try { if (board[Y, X + 1] == 1000) { return true; } } catch (Exception) { }
+            try { if (board[Y    , X + 1] == 1000) { return true; } } catch (Exception) { }
             try { if (board[Y - 1, X + 1] == 1000) { return true; } } catch (Exception) { }
-            try { if (board[Y - 1, X] == 1000) { return true; } } catch (Exception) { }
+            try { if (board[Y - 1, X    ] == 1000) { return true; } } catch (Exception) { }
             try { if (board[Y - 1, X - 1] == 1000) { return true; } } catch (Exception) { }
-            try { if (board[Y, X - 1] == 1000) { return true; } } catch (Exception) { }
+            try { if (board[Y    , X - 1] == 1000) { return true; } } catch (Exception) { }
             try { if (board[Y + 1, X - 1] == 1000) { return true; } } catch (Exception) { }
 
             return false;
@@ -341,7 +340,7 @@ namespace WorkingChess
         }
         public bool HorseCheck(int X, int Y)
         {
-            if (HorseCheckCondition(X + 2, Y + 1)) { return true; }
+            if      (HorseCheckCondition(X + 2, Y + 1)) { return true; }
             else if (HorseCheckCondition(X - 2, Y + 1)) { return true; }
             else if (HorseCheckCondition(X + 2, Y - 1)) { return true; }
             else if (HorseCheckCondition(X - 2, Y - 1)) { return true; }
@@ -362,7 +361,7 @@ namespace WorkingChess
             while (X > 0)
             {
                 X--;
-                if (board[tempY, X] < 10 && board[tempY, X] != 0) { break; }
+                if (board[tempY, X] < 1000 && board[tempY, X] != 0) { break; }
                 else
                 {
                     rookMoves[sqaures].X = X;
@@ -375,20 +374,19 @@ namespace WorkingChess
             while (X < 7)
             {
                 X++;
-                if (board[tempY, X] < 10 && board[tempY, X] != 0) { break; }
+                if (board[tempY, X] < 1000 && board[tempY, X] != 0) { break; }
                 else
                 {
                     rookMoves[sqaures].X = X;
                     rookMoves[sqaures].Y = Y;
                     sqaures++;
                 }
-
             }
 
             while (Y > 0)
             {
                 Y--;
-                if (board[Y, tempX] < 10 && board[Y, tempX] != 0) { break; }
+                if (board[Y, tempX] < 1000 && board[Y, tempX] != 0) { break; }
                 else
                 {
                     rookMoves[sqaures].X = X;
@@ -401,7 +399,7 @@ namespace WorkingChess
             while (Y < 7)
             {
                 Y++;
-                if (board[Y, tempX] < 10 && board[Y, tempX] != 0) { break; }
+                if (board[Y, tempX] < 1000 && board[Y, tempX] != 0) { break; }
                 else
                 {
                     rookMoves[sqaures].X = X;
@@ -429,14 +427,13 @@ namespace WorkingChess
             while (X > 0 && Y > 0)
             {
                 X--; Y--;
-                if (board[Y, X] < 10 && board[Y, X] != 0) { break; }
+                if (board[Y, X] < 1000 && board[Y, X] != 0) { break; }
                 else
                 {
                     bishopMoves[sqaures].X = X;
                     bishopMoves[sqaures].Y = Y;
                     sqaures++;
                 }
-
             }
 
             X = tempX;
@@ -446,7 +443,7 @@ namespace WorkingChess
             while (X > 0 && Y < 7)
             {
                 X--; Y++;
-                if (board[Y, X] < 10 && board[Y, X] != 0) { break; }
+                if (board[Y, X] < 1000 && board[Y, X] != 0) { break; }
                 else
                 {
                     bishopMoves[sqaures].X = X;
@@ -462,7 +459,7 @@ namespace WorkingChess
             while (X < 7 && Y > 0)
             {
                 X++; Y--;
-                if (board[Y, X] < 10 && board[Y, X] != 0) { break; }
+                if (board[Y, X] < 1000 && board[Y, X] != 0) { break; }
                 else
                 {
                     bishopMoves[sqaures].X = X;
@@ -478,7 +475,7 @@ namespace WorkingChess
             while (X < 7 && Y < 7)
             {
                 X++; Y++;
-                if (board[Y, X] < 10 && board[Y, X] != 0) { break; }
+                if (board[Y, X] < 1000 && board[Y, X] != 0) { break; }
                 else
                 {
                     bishopMoves[sqaures].X = X;
